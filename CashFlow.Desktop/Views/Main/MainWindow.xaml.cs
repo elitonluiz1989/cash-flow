@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace CashFlow.Desktop.Views
+namespace CashFlow.Desktop.Views.Main
 {
     public partial class MainWindow : Window
     {

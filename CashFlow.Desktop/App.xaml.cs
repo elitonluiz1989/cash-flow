@@ -1,5 +1,5 @@
 ﻿using CashFlow.Desktop.Tools;
-using CashFlow.Desktop.Views;
+using CashFlow.Desktop.Views.Main;
 using CashFlow.Infra.Data.Context;
 using CashFlow.Infra.Data.Mapping;
 using Microsoft.Extensions.DependencyInjection;
