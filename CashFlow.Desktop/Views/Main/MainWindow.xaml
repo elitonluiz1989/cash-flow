@@ -27,17 +27,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView
+        <StackPanel
             Grid.Row="0"
             Grid.Column="0"
             Grid.RowSpan="2"
             Style="{StaticResource MainMenuStyle}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="Menu Item" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <Border Style="{StaticResource MainMenuHeaderStyle}"></Border>
+            
+            <TextBlock
+                Style="{StaticResource MainMenuGroupStyle}"
+                Text="Cash" />
+
+            <Button
+                Style="{StaticResource MainMenuItemStyle}"
+                Content="Cash" />
+
+            <Button
+                Style="{StaticResource MainMenuItemStyle}"
+                Content="Historic" />
+            
+            <TextBlock
+                Style="{StaticResource MainMenuGroupStyle}"
+                Text="Stock" />
+
+            <Button
+                Style="{StaticResource MainMenuItemStyle}"
+                Content="Items" />
+        </StackPanel>
         
         <StackPanel
             Grid.Row="0"
