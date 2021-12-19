@@ -1,4 +1,7 @@
-﻿using CashFlow.Desktop.Tools;
+﻿using CashFlow.Desktop.Services.Main;
+using CashFlow.Desktop.Tools;
+using CashFlow.Desktop.ViewModels.Main;
+using CashFlow.Desktop.ViewModels.Stock.StockItems;
 using CashFlow.Desktop.Views.Main;
 using CashFlow.Infra.Data.Context;
 using CashFlow.Infra.Data.Mapping;
@@ -16,7 +19,12 @@ namespace CashFlow.Desktop
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<SQLiteContext>();
 
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<StockItemsViewViewModel>();
+            services.AddSingleton<MainVindowViewModel>();
+
+            services.AddSingleton<NavigationService>();
+
+            services.AddSingleton(s => new MainWindow() { DataContext = s.GetRequiredService<MainVindowViewModel>() });
 
             _serviceProvider = services.BuildServiceProvider();
         }
@@ -28,6 +36,9 @@ namespace CashFlow.Desktop
 
             ServiceProviderAcessor.Initialize(_serviceProvider);
             AppMapper.Initialize();
+
+            NavigationService navigationService = _serviceProvider.GetRequiredService<NavigationService>();
+            navigationService.SetCurrentViewModel(_serviceProvider.GetRequiredService<StockItemsViewViewModel>());
 
             MainWindow mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
