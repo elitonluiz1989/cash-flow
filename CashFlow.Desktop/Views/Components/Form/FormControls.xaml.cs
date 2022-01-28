@@ -7,6 +7,20 @@ namespace CashFlow.Desktop.Views.Components.Form
 {
     public partial class FormControls : UserControl
     {
+        public string CancelContent
+        {
+            get => (string)GetValue(CancelContentProperty);
+            set => SetValue(CancelContentProperty, value);
+        }
+
+        public static readonly DependencyProperty CancelContentProperty =
+            DependencyProperty.Register(
+                "CancelContent",
+                typeof(string),
+                typeof(FormControls),
+                new PropertyMetadata("Cancel")
+            );
+
         public ICommand CancelCommand
         {
             get => (ICommand)GetValue(CancelCommandProperty);
@@ -35,6 +49,20 @@ namespace CashFlow.Desktop.Views.Components.Form
                 new PropertyMetadata(default(object))
             );
 
+        public string ResetContent
+        {
+            get => (string)GetValue(ResetContentProperty);
+            set => SetValue(ResetContentProperty, value);
+        }
+
+        public static readonly DependencyProperty ResetContentProperty =
+            DependencyProperty.Register(
+                "RestContent",
+                typeof(string),
+                typeof(FormControls),
+                new PropertyMetadata("Reset")
+            );
+
         public ICommand ResetCommand
         {
             get => (ICommand)GetValue(ResetCommandProperty);
@@ -61,6 +89,19 @@ namespace CashFlow.Desktop.Views.Components.Form
                 typeof(object),
                 typeof(FormControls),
                 new PropertyMetadata(default(object))
+            );
+        public string SubmitContent
+        {
+            get => (string)GetValue(SubmitContentProperty);
+            set => SetValue(SubmitContentProperty, value);
+        }
+
+        public static readonly DependencyProperty SubmitContentProperty =
+            DependencyProperty.Register(
+                "SubmitContent",
+                typeof(string),
+                typeof(FormControls),
+                new PropertyMetadata("Submit")
             );
 
         public ICommand SubmitCommand
