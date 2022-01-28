@@ -15,7 +15,7 @@ namespace CashFlow.Desktop.Views.Components.Form
         }
 
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(FormField), new PropertyMetadata("Label"));
+            DependencyProperty.Register("Label", typeof(string), typeof(FormField), new PropertyMetadata(default(string)));
 
         public EFormFieldType Type
         {
@@ -33,7 +33,7 @@ namespace CashFlow.Desktop.Views.Components.Form
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(object), typeof(FormField), new PropertyMetadata(null));
+            DependencyProperty.Register("Value", typeof(object), typeof(FormField), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public object ItemsSource
         {

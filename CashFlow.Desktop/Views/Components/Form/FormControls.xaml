@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="CashFlow.Desktop.Views.Components.Form.FormControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CashFlow.Desktop.Views.Components.Form"
+             mc:Ignorable="d" 
+             Name="FormControlsElement"
+             d:DesignHeight="50"
+             d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./FormControlsStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0">
+            <Button
+                x:Name="ButtonCancel"
+                Style="{StaticResource FormControlCancel}"
+                Click="ButtonCancel_Click"
+                Content="{Binding CancelContent, ElementName=FormControlsElement}" />
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1">
+            <Button
+                x:Name="ButtonReset"
+                Style="{StaticResource FormControlCancel}"
+                Click="ButtonReset_Click"
+                Content="{Binding ResetContent, ElementName=FormControlsElement}" />
+
+            <Button
+                x:Name="ButtonSubmit"
+                Style="{StaticResource FormControlSubmit}"
+                Click="ButtonSubmit_Click"
+                Content="{Binding SubmitContent, ElementName=FormControlsElement}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
