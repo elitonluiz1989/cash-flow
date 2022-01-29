@@ -1,10 +1,10 @@
-﻿using CashFlow.Desktop.Tools;
-using CashFlow.Infra.Data.Mapping;
+﻿using CashFlow.Tools;
+using System;
 using System.ComponentModel;
 
 namespace CashFlow.Desktop.ViewModels.Contract
 {
-    internal class ViewModel
+    internal abstract class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -17,15 +17,20 @@ namespace CashFlow.Desktop.ViewModels.Contract
 
         public TType CastTo<TType>()
         {
-            return AppMapper.Map<TType>(this);
+            return MapperHandler.Map<TType>(this);
         }
 
-        public static TViewModel CreateFrom<TType, TViewModel>(TType obj)
+        public static TViewModel CreateFrom<TType, TViewModel>(TType obj) where TViewModel : notnull
         {
             if (obj == null)
                 return ServiceProviderAcessor.GetRequiredService<TViewModel>();
 
-            return AppMapper.Map<TViewModel>(obj);
+            return MapperHandler.Map<TViewModel>(obj);
+        }
+
+        public virtual void Reset()
+        {
+            throw new NotImplementedException();
         }
     }
 }
