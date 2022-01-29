@@ -1,6 +1,6 @@
 ﻿using CashFlow.Desktop.Services.Main;
 using CashFlow.Desktop.ViewModels.Main;
-using CashFlow.Desktop.ViewModels.Stock.StockItems;
+using CashFlow.Desktop.ViewModels.Products;
 using CashFlow.Desktop.Views.Main;
 using CashFlow.Infra.Data.Context;
 using CashFlow.Tools;
@@ -40,7 +40,7 @@ namespace CashFlow.Desktop
             MapperHandler.Initialize();
 
             NavigationService navigationService = _serviceProvider.GetRequiredService<NavigationService>();
-            navigationService.SetCurrentViewModel(_serviceProvider.GetRequiredService<StockItemsViewViewModel>());
+            navigationService.SetCurrentViewModel(_serviceProvider.GetRequiredService<ProductsViewModel>());
 
             MainWindow mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
@@ -53,7 +53,7 @@ namespace CashFlow.Desktop
 
         private static void SetViewModels(IServiceCollection services)
         {
-            services.AddTransient<StockItemsViewViewModel>();
+            services.AddTransient<ProductsViewModel>();
             services.AddSingleton<MainVindowViewModel>();
         }
 

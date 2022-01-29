@@ -18,4 +18,8 @@
     <ProjectReference Include="..\CashFlow\CashFlow.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

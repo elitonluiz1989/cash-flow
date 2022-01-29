@@ -10,7 +10,7 @@
         <Setter Property="Margin" Value="10, 5, 10, 10" />
     </Style>
 
-    <Style x:Key="AddItemBtn" TargetType="Button" BasedOn="{StaticResource Btn}">
+    <Style x:Key="AddIProductBtn" TargetType="Button" BasedOn="{StaticResource Btn}">
         <Setter Property="MinWidth" Value="100" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="Gray" />

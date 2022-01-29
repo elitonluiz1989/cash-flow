@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashFlow.Desktop.Views.Main"
         xmlns:mainViewModels="clr-namespace:CashFlow.Desktop.ViewModels.Main"
-        xmlns:stockItemViewModels="clr-namespace:CashFlow.Desktop.ViewModels.Stock.StockItems"
-        xmlns:stockItemViews="clr-namespace:CashFlow.Desktop.Views.Stock.StockItems"
+        xmlns:productsViewModels="clr-namespace:CashFlow.Desktop.ViewModels.Products"
+        xmlns:productsViews="clr-namespace:CashFlow.Desktop.Views.Products"
         d:DataContext="{d:DesignInstance Type=mainViewModels:MainVindowViewModel}"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -74,8 +74,8 @@
                 <ContentControl
                     Content="{Binding CurrentViewModel}">
                     <ContentControl.Resources>
-                        <DataTemplate DataType="{x:Type stockItemViewModels:StockItemsViewViewModel}">
-                            <stockItemViews:StockItemsView />
+                        <DataTemplate DataType="{x:Type productsViewModels:ProductsViewModel}">
+                            <productsViews:ProductsView />
                         </DataTemplate>
                     </ContentControl.Resources>
                 </ContentControl>

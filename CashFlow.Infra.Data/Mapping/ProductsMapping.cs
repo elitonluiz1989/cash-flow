@@ -4,21 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CashFlow.Infra.Data.Mapping
 {
-    internal class StockItemMapper : IEntityTypeConfiguration<StockItem>
+    internal class ProductsMapper : IEntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<StockItem> builder)
+        public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("StockItems");
+            builder.ToTable("Products");
             builder.HasKey(prop => prop.Id);
             builder.Property(prop => prop.Name)
                 .HasConversion(prop => prop.ToString(), prop => prop)
                 .IsRequired()
                 .HasColumnName("Name")
                 .HasColumnType("VARCHAR(200)");
-            builder.Property(prop => prop.Type)
-                .IsRequired()
-                .HasColumnName("Type")
-                .HasColumnType("INTEGER");
             builder.Property(prop => prop.Quantity)
                 .IsRequired()
                 .HasColumnName("Quantity")
