@@ -2,10 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CashFlow.Desktop.Views.Components.Form"
              mc:Ignorable="d" 
              Name="FormFieldComponent"
+             d:Background="White"
              d:DesignHeight="40"
              d:DesignWidth="400">
     <UserControl.Resources>
@@ -15,30 +16,71 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+
+    <Validation.ErrorTemplate>
+        <ControlTemplate>
+            <!-- Reset default error styles -->
+            <AdornedElementPlaceholder />
+        </ControlTemplate>
+    </Validation.ErrorTemplate>
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Label
+            Grid.Row="0"
             Grid.Column="0"
             Content="{Binding Label, ElementName=FormFieldComponent}" />
 
         <StackPanel
+            Grid.Row="0"
             Grid.Column="1">
             <TextBox
-                Grid.Column="1"
-                Text="{Binding Value, ElementName=FormFieldComponent}" />
+                x:Name="TbValue"
+                TextChanged="TbValue_TextChanged"
+                KeyUp="TbValue_KeyUp"
+                KeyDown="TbValue_KeyDown"
+                TextAlignment="Right"
+                Text="{Binding Value,
+                        ElementName=FormFieldComponent,
+                        UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
         </StackPanel>
 
         <StackPanel
+            Grid.Row="0"
             Grid.Column="1">
             <ComboBox
-                ItemsSource="{Binding ItemsSource, ElementName=FormFieldComponent}"
+                x:Name="CmbValue"
+                SelectionChanged="CmbValue_SelectionChanged"
+                ItemsSource="{Binding ItemsSource,
+                                Mode=TwoWay,
+                                ElementName=FormFieldComponent}"
                 DisplayMemberPath="Name"
-                SelectedValue="{Binding Value, ElementName=FormFieldComponent}" />
+                SelectedValue="{Binding Value,
+                                ElementName=FormFieldComponent,
+                                UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+
+        <ItemsControl
+            x:Name="LstErrors"
+            Grid.Row="1"
+            Grid.Column="1"
+            ItemsSource="{Binding ValidationErrors, ElementName=FormFieldComponent}"
+            Style="{StaticResource ListErrorsStyle}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBox Text="{Binding ErrorContent}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

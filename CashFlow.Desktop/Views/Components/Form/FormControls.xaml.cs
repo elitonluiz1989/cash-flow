@@ -186,9 +186,9 @@ namespace CashFlow.Desktop.Views.Components.Form
             AddCommand(newCommand);
         }
 
-        private static void CommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void CommandChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            FormControls fc = (FormControls)d;
+            FormControls fc = (FormControls)dependencyObject;
             fc.HookUpCommand((ICommand)e.OldValue, (ICommand)e.NewValue);
         }
 
