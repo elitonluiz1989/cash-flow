@@ -5,11 +5,12 @@ using System.Windows.Data;
 
 namespace CashFlow.Desktop.Views.Components.Form
 {
-    internal class FormFieldIsTextConverter : IValueConverter
+    internal class FormFieldTextAsCurrencyConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (EFormFieldType)value is not EFormFieldType.Combobox;
+            bool isCurrencyFormat = (EFormFieldFormattingType)value is EFormFieldFormattingType.Currency;
+            return isCurrencyFormat;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

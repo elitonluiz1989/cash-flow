@@ -87,19 +87,31 @@ namespace CashFlow.Desktop.Views.Components.Form
                 new PropertyMetadata(EFormFieldFormattingType.None)
             );
 
+        public uint MaxLength
+        {
+            get => (uint)GetValue(MaxLengthProperty);
+            set => SetValue(MaxLengthProperty, value);
+        }
+
+        public static readonly DependencyProperty MaxLengthProperty =
+            DependencyProperty.Register(
+                "MaxLength",
+                typeof(uint),
+                typeof(FormField),
+                new PropertyMetadata(null)
+            );
+
         public ObservableCollection<ValidationError> ValidationErrors { get; set; } = new ObservableCollection<ValidationError>();
 
-        private List<Key> _numericKeys;
-        private List<Key> _directionalKeys;
-        private List<Key> _controlKeys;
-        private bool enableValueFormat = false;
+        private readonly List<Key> _allowedKeys;
+        private const int MAX_LENGTH_TO_ADD_LEADING_ZEROS = 3;
 
         public FormField()
         {
             InitializeComponent();
             
             Validation.AddErrorHandler(this, ValidationErrorHandler);
-            _numericKeys = new List<Key>()
+            _allowedKeys = new List<Key>()
             {
                 Key.D0,
                 Key.D1,
@@ -120,19 +132,10 @@ namespace CashFlow.Desktop.Views.Components.Form
                 Key.NumPad6,
                 Key.NumPad7,
                 Key.NumPad8,
-                Key.NumPad9
-            };
-
-            _directionalKeys = new List<Key>() {
-                Key.Left,
-                Key.Up,
-                Key.Right,
-                Key.Down
-            };
-
-            _controlKeys = new List<Key>()
-            {
-                Key.Enter
+                Key.NumPad9,
+                Key.Back,
+                Key.Delete,
+                Key.Tab
             };
         }
 
@@ -208,9 +211,9 @@ namespace CashFlow.Desktop.Views.Components.Form
             decimal convertedValue;
             string value = Regex.Replace(TbValue.Text, @"\.|,", "").TrimStart('0');
 
-            if (value.Length < 3)
+            if (value.Length < MAX_LENGTH_TO_ADD_LEADING_ZEROS)
             {
-                value = value.PadLeft(3, '0');
+                value = value.PadLeft(MAX_LENGTH_TO_ADD_LEADING_ZEROS, '0');
             }
 
             string firstPart = value[0..^2];
@@ -219,15 +222,12 @@ namespace CashFlow.Desktop.Views.Components.Form
             value = string.Format("{0}.{1}", firstPart, secondPart);
             convertedValue = Convert.ToDecimal(value) / 100;
 
-            Value = convertedValue.ToString("N2", CultureInfo.CurrentCulture);
-
-            TbValue.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            TbValue.CaretIndex = TbValue.Text.Length;
+            TbValueCurrency.Text = convertedValue.ToString("N2", CultureInfo.CurrentCulture);
         }
 
         private void TbValue_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (FormattingType is EFormFieldFormattingType.Currency && !enableValueFormat)
+            if (FormattingType is EFormFieldFormattingType.Currency)
             {
                 ValueToCurrency();
             }
@@ -240,31 +240,16 @@ namespace CashFlow.Desktop.Views.Components.Form
             FillListErrors((Control)sender);
         }
 
-        private void TbValue_KeyDown(object sender, KeyEventArgs e)
+        private void TbValue_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (FormattingType is not EFormFieldFormattingType.None)
             {
-                if (!_numericKeys.Contains(e.Key))
+                if (!_allowedKeys.Contains(e.Key))
                 {
                     e.Handled = true;
                 }
             }
-        }
 
-        private void TbValue_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (FormattingType is not EFormFieldFormattingType.None)
-            {
-                if (_controlKeys.Contains(e.Key))
-                {
-                    enableValueFormat = false;
-                    ValueToCurrency();
-                }
-                else if (_directionalKeys.Contains(e.Key))
-                {
-                    enableValueFormat = true;
-                }
-            }
         }
     }
 }

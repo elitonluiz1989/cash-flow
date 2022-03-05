@@ -4,7 +4,10 @@
                     xmlns:local="clr-namespace:CashFlow.Desktop.Views.Components.Form"> 
     <local:FormFieldIsComboboxConverter x:Key="IsComboboxConverter" />
     <local:FormFieldIsTextConverter x:Key="IsTextConverter" />
-    <local:FormFieldHasWidthDefinedConverter x:Key="WidthDefinedConverter" />
+    <local:FormFieldHasWidthDefinedConverter x:Key="HasWidthDefinedConverter" />
+    <local:FormFieldHasMaxLengthDefinedConverter x:Key="HasMaxLengthDefinedConverter" />
+    <local:FormFieldTextAsNumericConverter x:Key="TextAsNumericConverter" />
+    <local:FormFieldTextAsCurrencyConverter x:Key="TextAsCurrencyConverter" />
 
     <Style TargetType="Label">
         <Setter Property="FontSize" Value="13" />
@@ -13,50 +16,117 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="FormFieldStyle" TargetType="FrameworkElement">
+    <Style x:Key="GridValueStyle" TargetType="Grid">
         <Setter Property="Margin" Value="3" />
+    </Style>
+
+    <Style x:Key="ValueStyle" TargetType="FrameworkElement">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
 
         <Style.Triggers>
-            <DataTrigger Binding="{Binding FieldWidth, ElementName=FormFieldComponent, Converter={StaticResource WidthDefinedConverter}}" Value="false">
+            <DataTrigger
+                Binding="{Binding FieldWidth,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource HasWidthDefinedConverter}}"
+                Value="False">
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding FieldWidth, ElementName=FormFieldComponent, Converter={StaticResource WidthDefinedConverter}}" Value="true">
+            <DataTrigger
+                Binding="{Binding FieldWidth,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource HasWidthDefinedConverter}}"
+                Value="True">
                 <Setter Property="Width" Value="{Binding FieldWidth, ElementName=FormFieldComponent}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
-
-    <Style TargetType="TextBox" BasedOn="{StaticResource FormFieldStyle}">
+    
+    <!-- Type text -->
+    <Style x:Key="TextValueBaseStyle" TargetType="TextBox" BasedOn="{StaticResource ValueStyle}">
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="FontSize" Value="14" />
 
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Type, ElementName=FormFieldComponent, Converter={StaticResource IsTextConverter}}" Value="false">
-                <Setter Property="Visibility" Value="Hidden" />
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TextValueStyle" TargetType="TextBox" BasedOn="{StaticResource TextValueBaseStyle}">
+        <Setter Property="Visibility" Value="Hidden" />
+        <Setter Property="IsEnabled" Value="False" />
+        
+        <Style.Triggers>
+            <DataTrigger
+                Binding="{Binding Type,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource IsTextConverter}}"
+                Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+                <Setter Property="IsEnabled" Value="True" />
+            </DataTrigger>
+            
+            <DataTrigger
+                Binding="{Binding MaxLength,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource HasMaxLengthDefinedConverter}}"
+                Value="True">
+                <Setter Property="MaxLength" Value="{Binding MaxLength, ElementName=FormFieldComponent}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Type, ElementName=FormFieldComponent, Converter={StaticResource IsTextConverter}}" Value="true">
-                <Setter Property="Visibility" Value="Visible" />
+            <DataTrigger
+                Binding="{Binding FormattingType,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource TextAsNumericConverter}}"
+                Value="True">
+                <Setter Property="TextAlignment" Value="Right" />
+            </DataTrigger>
+
+            <DataTrigger
+                Binding="{Binding FormattingType,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource TextAsCurrencyConverter}}"
+                Value="True">
+                <Setter Property="Panel.ZIndex" Value="1" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="TextAlignment" Value="Right" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="ComboBox" BasedOn="{StaticResource FormFieldStyle}">
+    <Style x:Key="TextValueCurrencyStyle" TargetType="TextBox" BasedOn="{StaticResource TextValueBaseStyle}">
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="Visibility" Value="Hidden" />
+        <Setter Property="IsReadOnly" Value="True" />
+
+        <Style.Triggers>
+            <DataTrigger
+                Binding="{Binding FormattingType,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource TextAsCurrencyConverter}}"
+                Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Type combobox -->
+    <Style TargetType="ComboBox" BasedOn="{StaticResource ValueStyle}">
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="FontSize" Value="14" />
-        
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding Type, ElementName=FormFieldComponent, Converter={StaticResource IsComboboxConverter}}" Value="false">
-                <Setter Property="Visibility" Value="Hidden" />
-                <Setter Property="IsEnabled" Value="False" />
-            </DataTrigger>
+        <Setter Property="Visibility" Value="Hidden" />
+        <Setter Property="IsEnabled" Value="False" />
 
-            <DataTrigger Binding="{Binding Type, ElementName=FormFieldComponent, Converter={StaticResource IsComboboxConverter}}" Value="true">
+        <Style.Triggers>
+            <DataTrigger
+                Binding="{Binding Type,
+                            ElementName=FormFieldComponent,
+                            Converter={StaticResource IsComboboxConverter}}"
+                Value="True">
                 <Setter Property="Visibility" Value="Visible" />
                 <Setter Property="IsEnabled" Value="True" />
             </DataTrigger>

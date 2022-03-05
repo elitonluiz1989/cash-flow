@@ -39,27 +39,32 @@
             Grid.Row="0"
             Grid.Column="0"
             Content="{Binding Label, ElementName=FormFieldComponent}" />
-
-        <StackPanel
+        <Grid
             Grid.Row="0"
-            Grid.Column="1">
+            Grid.Column="1"
+            Style="{StaticResource GridValueStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
             <TextBox
                 x:Name="TbValue"
+                Grid.Row="0"
                 TextChanged="TbValue_TextChanged"
-                KeyUp="TbValue_KeyUp"
-                KeyDown="TbValue_KeyDown"
-                TextAlignment="Right"
+                PreviewKeyDown="TbValue_PreviewKeyDown"
+                Style="{StaticResource TextValueStyle}"
                 Text="{Binding Value,
                         ElementName=FormFieldComponent,
-                        UpdateSourceTrigger=PropertyChanged}">
-            </TextBox>
-        </StackPanel>
+                        UpdateSourceTrigger=PropertyChanged}" />
 
-        <StackPanel
-            Grid.Row="0"
-            Grid.Column="1">
+            <TextBox
+                x:Name="TbValueCurrency"
+                Grid.Row="0"
+                Style="{StaticResource TextValueCurrencyStyle}" />
+
             <ComboBox
                 x:Name="CmbValue"
+                Grid.Row="0"
                 SelectionChanged="CmbValue_SelectionChanged"
                 ItemsSource="{Binding ItemsSource,
                                 Mode=TwoWay,
@@ -68,7 +73,8 @@
                 SelectedValue="{Binding Value,
                                 ElementName=FormFieldComponent,
                                 UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+
+        </Grid>
 
         <ItemsControl
             x:Name="LstErrors"
