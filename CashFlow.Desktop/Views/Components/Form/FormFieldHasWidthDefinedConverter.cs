@@ -20,7 +20,7 @@ namespace CashFlow.Desktop.Views.Components.Form
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return ((string)value).ToString(culture);
         }
     }
 }

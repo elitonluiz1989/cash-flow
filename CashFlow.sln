@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Infra.Data", "CashFlow.Infra.Data\CashFlow.Infra.Data.csproj", "{4ED78F2F-2EFF-4AA6-87B0-A3CE5CDFCDFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Desktop", "CashFlow.Desktop\CashFlow.Desktop.csproj", "{AC6547D8-1C95-445C-BD4A-451C0AC4EE53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Desktop", "CashFlow.Desktop\CashFlow.Desktop.csproj", "{AC6547D8-1C95-445C-BD4A-451C0AC4EE53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Shared", "CashFlow.Shared\CashFlow.Shared.csproj", "{FEF0BD04-2E40-458E-8C81-7E1A685533D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{AC6547D8-1C95-445C-BD4A-451C0AC4EE53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6547D8-1C95-445C-BD4A-451C0AC4EE53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6547D8-1C95-445C-BD4A-451C0AC4EE53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF0BD04-2E40-458E-8C81-7E1A685533D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF0BD04-2E40-458E-8C81-7E1A685533D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF0BD04-2E40-458E-8C81-7E1A685533D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF0BD04-2E40-458E-8C81-7E1A685533D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

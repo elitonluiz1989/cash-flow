@@ -10,7 +10,7 @@ namespace CashFlow.Infra.Data.Context
 {
     public class SQLiteContext : DbContext
     {
-        public DbSet<StockItem> StockItem { get; set; }
+        public DbSet<Product> StockItem { get; set; }
         public SQLiteContext() : base()
         { }
 
@@ -28,7 +28,7 @@ namespace CashFlow.Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StockItem>(new StockItemMapper().Configure);
+            modelBuilder.Entity<Product>(new ProductsMapper().Configure);
             base.OnModelCreating(modelBuilder);
         }
 
