@@ -1,4 +1,4 @@
-﻿namespace CashFlow.Tools
+﻿namespace CashFlow.Shared
 {
     public static class Helpers
     {
@@ -39,5 +39,17 @@
             return list;
         }
         #endregion
+
+        public static string GetExceptionMesssage(Exception ex)
+        {
+            string exceptionMessage = ex.Message;
+
+            if (ex.InnerException != null && !string.IsNullOrWhiteSpace(ex.InnerException.Message))
+            {
+                exceptionMessage += ex.InnerException.Message;
+            }
+
+            return exceptionMessage;
+        }
     }
 }

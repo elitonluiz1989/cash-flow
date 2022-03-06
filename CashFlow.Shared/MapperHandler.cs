@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Linq.Expressions;
 
-namespace CashFlow.Tools
+namespace CashFlow.Shared
 {
     public class MapperHandler
     {

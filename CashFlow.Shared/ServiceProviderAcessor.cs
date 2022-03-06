@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace CashFlow.Tools
+namespace CashFlow.Shared
 {
     public class ServiceProviderAcessor
     {
