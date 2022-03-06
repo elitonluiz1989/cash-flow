@@ -27,7 +27,7 @@
             Grid.Row="0"
             Style="{StaticResource TopPanel}">
             <Button
-                Style="{StaticResource AddIProductBtn}"
+                Style="{StaticResource AddProductBtn}"
                 Command="{Binding ShowFormCommand}"
                 Content="Add" />
         </StackPanel>

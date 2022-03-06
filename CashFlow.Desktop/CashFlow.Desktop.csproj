@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CashFlow.Infra.Data\CashFlow.Infra.Data.csproj" />
-    <ProjectReference Include="..\CashFlow.Tools\CashFlow.Tools.csproj" />
+    <ProjectReference Include="..\CashFlow.Shared\CashFlow.Shared.csproj" />
   </ItemGroup>
 
 </Project>
