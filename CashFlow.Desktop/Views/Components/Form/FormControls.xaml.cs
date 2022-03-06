@@ -57,7 +57,7 @@ namespace CashFlow.Desktop.Views.Components.Form
 
         public static readonly DependencyProperty ResetContentProperty =
             DependencyProperty.Register(
-                "RestContent",
+                "ResetContent",
                 typeof(string),
                 typeof(FormControls),
                 new PropertyMetadata("Reset")

@@ -1,4 +1,5 @@
 ﻿using CashFlow.Entities;
+using CashFlow.Shared.Globalization;
 using FluentValidation;
 
 namespace CashFlow.Validators
@@ -10,13 +11,16 @@ namespace CashFlow.Validators
             RuleFor(p => p.Name)
                 .NotEmpty()
                 .MinimumLength(3)
-                .MaximumLength(200);
+                .MaximumLength(200)
+                .WithName(Strings.Name);
 
             RuleFor(p => p.Quantity)
-                .GreaterThan((ushort)0);
+                .GreaterThan((ushort)0)
+                .WithName(Strings.Quantity);
 
             RuleFor(p => p.Price)
-                .NotEqual(0);
+                .NotEqual(0)
+                .WithName(Strings.Price);
         }
     }
 }

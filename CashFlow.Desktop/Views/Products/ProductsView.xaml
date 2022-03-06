@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CashFlow.Desktop.Views.Products"
+             xmlns:globalization="clr-namespace:CashFlow.Shared.Globalization;assembly=CashFlow.Shared"
              xmlns:viewmodel="clr-namespace:CashFlow.Desktop.ViewModels.Products"
              d:DataContext="{d:DesignInstance Type=viewmodel:ProductsViewModel}"
              Name="StockItemViewWindow"
@@ -29,7 +30,7 @@
             <Button
                 Style="{StaticResource AddProductBtn}"
                 Command="{Binding ShowFormCommand}"
-                Content="Add" />
+                Content="{x:Static globalization:Strings.Add}" />
         </StackPanel>
         
         <Border Grid.Row="1">

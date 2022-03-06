@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashFlow.Desktop.Views.Products"
+        xmlns:globalization="clr-namespace:CashFlow.Shared.Globalization;assembly=CashFlow.Shared"
         xmlns:viewModel="clr-namespace:CashFlow.Desktop.ViewModels.Products"
         xmlns:form="clr-namespace:CashFlow.Desktop.Views.Components.Form"
         d:DataContext="{d:DesignInstance Type=viewModel:ProductViewModel}"
         mc:Ignorable="d"
         Name="ProductFormWindow"
-        Title="Product"
+        Title="{x:Static globalization:Strings.Product}"
         Height="220"
         Width="400"
         Style="{StaticResource Form}"
@@ -33,13 +34,13 @@
 
         <form:FormField
             Grid.Row="0"
-            Label="Name"
+            Label="{x:Static globalization:Strings.Name}"
             MaxLength="200"
             Value="{Binding Name, NotifyOnValidationError=True}" />
 
         <form:FormField
             Grid.Row="1"
-            Label="Qtd."
+            Label="{x:Static globalization:Strings.Quantity}"
             FormattingType="Numeric"
             MaxLength="3"
             Style="{StaticResource FieldQuantity}"
@@ -47,7 +48,7 @@
 
         <form:FormField
             Grid.Row="2"
-            Label="Price"
+            Label="{x:Static globalization:Strings.Price}"
             FormattingType="Currency"
             MaxLength="8"
             Style="{StaticResource FieldPrice}"
@@ -57,11 +58,13 @@
             Grid.Row="3"
             Style="{StaticResource FormControlsContainer}">
             <form:FormControls
+                CancelContent="{x:Static globalization:Strings.Cancel}"
                 CancelCommand="{Binding CancelCommand}"
                 CancelCommandParameter="{Binding ElementName=ProductFormWindow}"
+                ResetContent="{x:Static globalization:Strings.Reset}"
                 ResetCommand="{Binding ResetCommand}"
                 ResetCommandParameter="{Binding ., Mode=TwoWay}"
-                SubmitContent="Save"
+                SubmitContent="{x:Static globalization:Strings.Save}"
                 SubmitCommand="{Binding SaveCommand}"
                 SubmitCommandParameter="{Binding ., Mode=TwoWay}" />
         </StackPanel>

@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashFlow.Desktop.Views.Main"
+        xmlns:globlization="clr-namespace:CashFlow.Shared.Globalization;assembly=CashFlow.Shared"
         xmlns:mainViewModels="clr-namespace:CashFlow.Desktop.ViewModels.Main"
         xmlns:productsViewModels="clr-namespace:CashFlow.Desktop.ViewModels.Products"
         xmlns:productsViews="clr-namespace:CashFlow.Desktop.Views.Products"
         d:DataContext="{d:DesignInstance Type=mainViewModels:MainVindowViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="{x:Static globlization:Strings.CashFlow}"
         Height="450"
         Width="800">
     <Window.Resources>
@@ -40,30 +41,30 @@
             
             <TextBlock
                 Style="{StaticResource MainMenuGroupStyle}"
-                Text="Cash" />
+                Text="{x:Static globlization:Strings.CashFlow}" />
 
             <Button
                 Style="{StaticResource MainMenuItemStyle}"
-                Content="Cash" />
+                Content="{x:Static globlization:Strings.Cash}" />
 
             <Button
                 Style="{StaticResource MainMenuItemStyle}"
-                Content="Historic" />
+                Content="{x:Static globlization:Strings.Historic}" />
             
             <TextBlock
                 Style="{StaticResource MainMenuGroupStyle}"
-                Text="Stock" />
+                Text="{x:Static globlization:Strings.Products}" />
 
             <Button
                 Style="{StaticResource MainMenuItemStyle}"
-                Content="Items" />
+                Content="{x:Static globlization:Strings.Products}" />
         </StackPanel>
         
         <StackPanel
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource MainTitleStyle}">
-            <TextBlock Text="Cash Flow" />
+            <TextBlock Text="{x:Static globlization:Strings.CashFlow}" />
         </StackPanel>
 
         <DockPanel
