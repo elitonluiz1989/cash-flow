@@ -51,6 +51,7 @@
                 x:Name="TbValue"
                 Grid.Row="0"
                 TextChanged="TbValue_TextChanged"
+                LostFocus="TbValue_LostFocus"
                 PreviewKeyDown="TbValue_PreviewKeyDown"
                 Style="{StaticResource TextValueStyle}"
                 Text="{Binding Value,

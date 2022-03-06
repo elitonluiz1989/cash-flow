@@ -101,6 +101,7 @@
         <Setter Property="TextAlignment" Value="Right" />
         <Setter Property="Visibility" Value="Hidden" />
         <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="Focusable" Value="False" />
 
         <Style.Triggers>
             <DataTrigger
@@ -137,6 +138,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Margin" Value="3" />
+        <Setter Property="Focusable" Value="False" />
 
         <Style.Resources>
             <Style TargetType="TextBox">

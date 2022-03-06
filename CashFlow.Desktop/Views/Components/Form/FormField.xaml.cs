@@ -135,7 +135,13 @@ namespace CashFlow.Desktop.Views.Components.Form
                 Key.NumPad9,
                 Key.Back,
                 Key.Delete,
-                Key.Tab
+                Key.Tab,
+                Key.LeftAlt,
+                Key.RightAlt,
+                Key.LeftCtrl,
+                Key.RightCtrl,
+                Key.LeftShift,
+                Key.RightShift
             };
         }
 
@@ -208,8 +214,15 @@ namespace CashFlow.Desktop.Views.Components.Form
 
         private void ValueToCurrency()
         {
-            decimal convertedValue;
             string value = Regex.Replace(TbValue.Text, @"\.|,", "").TrimStart('0');
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                TbValueCurrency.Text = string.Empty;
+                return;
+            }
+
+            decimal convertedValue;
 
             if (value.Length < MAX_LENGTH_TO_ADD_LEADING_ZEROS)
             {
@@ -250,6 +263,20 @@ namespace CashFlow.Desktop.Views.Components.Form
                 }
             }
 
+        }
+
+        private void TbValue_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (FormattingType is EFormFieldFormattingType.Currency)
+            {
+                string formattedValue = TbValueCurrency.Text.Trim();
+
+                if (!string.IsNullOrWhiteSpace(formattedValue))
+                {
+                    Value = Convert.ToDecimal(TbValueCurrency.Text.Trim());
+                    TbValue.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+            }            
         }
     }
 }
