@@ -4,6 +4,7 @@ using CashFlow.Desktop.ViewModels.Products;
 using CashFlow.Entities;
 using CashFlow.Infra.Data.Repositories;
 using CashFlow.Shared;
+using CashFlow.Shared.Globalization;
 using System;
 using System.Windows;
 
@@ -36,7 +37,7 @@ namespace CashFlow.Desktop.Commands.Products
                         Product entity = viewModel.CastTo<Product>();
                         _repository.Save(entity);
 
-                        MessageBox.Show("Product was saved.");
+                        MessageBox.Show(Strings.ProductSaved);
 
                         _service.CloseForm();
                     }
