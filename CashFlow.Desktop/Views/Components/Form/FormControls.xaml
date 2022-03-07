@@ -24,7 +24,7 @@
         <StackPanel Grid.Column="0">
             <Button
                 x:Name="ButtonCancel"
-                Style="{StaticResource FormControlCancel}"
+                Style="{StaticResource FormControlCancelStyle}"
                 Click="ButtonCancel_Click"
                 Content="{Binding CancelContent, ElementName=FormControlsElement}" />
         </StackPanel>
@@ -32,13 +32,13 @@
         <StackPanel Grid.Column="1">
             <Button
                 x:Name="ButtonReset"
-                Style="{StaticResource FormControlCancel}"
+                Style="{StaticResource FormControlCancelStyle}"
                 Click="ButtonReset_Click"
                 Content="{Binding ResetContent, ElementName=FormControlsElement}" />
 
             <Button
                 x:Name="ButtonSubmit"
-                Style="{StaticResource FormControlSubmit}"
+                Style="{StaticResource FormControlSubmitStyle}"
                 Click="ButtonSubmit_Click"
                 Content="{Binding SubmitContent, ElementName=FormControlsElement}" />
         </StackPanel>

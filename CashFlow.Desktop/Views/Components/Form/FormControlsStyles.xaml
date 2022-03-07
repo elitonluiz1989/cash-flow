@@ -4,16 +4,16 @@
         <Setter Property="Orientation" Value="Horizontal" />
     </Style>
 
-    <Style x:Key="FormControlBtn"  TargetType="Button" BasedOn="{StaticResource BtnDefault}">
+    <Style x:Key="FormControlBtnStyle"  TargetType="Button" BasedOn="{StaticResource BtnDefaultStyle}">
         <Setter Property="Width" Value="100" />
         <Setter Property="Margin" Value="10 5" />
     </Style>
 
-    <Style x:Key="FormControlCancel" TargetType="Button" BasedOn="{StaticResource FormControlBtn}">
+    <Style x:Key="FormControlCancelStyle" TargetType="Button" BasedOn="{StaticResource FormControlBtnStyle}">
         <Setter Property="Background" Value="White" />
     </Style>
 
-    <Style x:Key="FormControlSubmit" TargetType="Button" BasedOn="{StaticResource FormControlBtn}">
+    <Style x:Key="FormControlSubmitStyle" TargetType="Button" BasedOn="{StaticResource FormControlBtnStyle}">
         <Setter Property="Background" Value="#24ad7b" />
         <Setter Property="BorderBrush" Value="#0e4d36" />
         <Setter Property="Foreground" Value="#0e4d36" />

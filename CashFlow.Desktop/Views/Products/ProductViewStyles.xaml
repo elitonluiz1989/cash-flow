@@ -12,7 +12,7 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
-    <Style x:Key="ProductBtnStyle" TargetType="Button" BasedOn="{StaticResource Btn}">
+    <Style x:Key="ProductBtnStyleStyle" TargetType="Button" BasedOn="{StaticResource BtnStyle}">
         <Setter Property="Width" Value="80" />
     </Style>
 </ResourceDictionary>

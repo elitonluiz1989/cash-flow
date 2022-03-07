@@ -27,9 +27,9 @@
         
         <StackPanel
             Grid.Row="0"
-            Style="{StaticResource TopPanelStyle}">
+            Style="{StaticResource ProductsTopPanelStyle}">
             <Button
-                Style="{StaticResource AddProductBtnStyle}"
+                Style="{StaticResource ProductsAddBtnStyle}"
                 Command="{Binding ShowFormCommand}"
                 Content="{x:Static globalization:Strings.Add}" />
         </StackPanel>

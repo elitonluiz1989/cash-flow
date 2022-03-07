@@ -59,7 +59,7 @@
     <Style
         x:Key="MainMenuItemStyle"
         TargetType="Button"
-        BasedOn="{StaticResource Btn}">
+        BasedOn="{StaticResource BtnStyle}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="Template">

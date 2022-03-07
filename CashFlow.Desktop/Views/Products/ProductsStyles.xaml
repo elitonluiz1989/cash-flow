@@ -5,13 +5,13 @@
         <Setter Property="Background" Value="white" />
     </Style>
 
-    <Style x:Key="TopPanelStyle" TargetType="StackPanel">
+    <Style x:Key="ProductsTopPanelStyle" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="0, 5, 0, 10" />
     </Style>
 
-    <Style x:Key="AddProductBtnStyle" TargetType="Button" BasedOn="{StaticResource Btn}">
+    <Style x:Key="ProductsAddBtnStyle" TargetType="Button" BasedOn="{StaticResource BtnStyle}">
         <Setter Property="MinWidth" Value="100" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="Gray" />

@@ -34,11 +34,11 @@
             Grid.Column="1"
             Style="{StaticResource ProductControlsStyle}">
             <Button
-                Style="{StaticResource ProductBtnStyle}"
+                Style="{StaticResource ProductBtnStyleStyle}"
                 Content="{x:Static globalization:Strings.Edit}" />
             
             <Button
-                Style="{StaticResource ProductBtnStyle}"
+                Style="{StaticResource ProductBtnStyleStyle}"
                 Content="{x:Static globalization:Strings.Remove}" />
         </StackPanel>
     </Grid>

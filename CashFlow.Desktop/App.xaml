@@ -10,7 +10,7 @@
         <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}" />
         <SolidColorBrush x:Key="PrimaryDarkColorBrush" Color="{StaticResource PrimaryDarkColor}" />
 
-        <Style x:Key="Btn" TargetType="Button">
+        <Style x:Key="BtnStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="Gray" />
             <Setter Property="BorderBrush" Value="Transparent" />
@@ -18,20 +18,20 @@
             <Setter Property="Cursor" Value="Hand" />
         </Style>
 
-        <Style x:Key="BtnBordered" TargetType="Button">
+        <Style x:Key="BtnBorderedStyle" TargetType="Button">
             <Setter Property="BorderThickness" Value="1" />
         </Style>
 
-        <Style x:Key="BtnDefault" TargetType="Button" BasedOn="{StaticResource BtnBordered}">
+        <Style x:Key="BtnDefaultStyle" TargetType="Button" BasedOn="{StaticResource BtnBorderedStyle}">
             <Setter Property="BorderBrush" Value="Gray" />
         </Style>
 
-        <Style x:Key="Form" TargetType="Window">
+        <Style x:Key="FormStyle" TargetType="Window">
             <Setter Property="ResizeMode" Value="NoResize" />
             <Setter Property="SizeToContent" Value="Height" />
         </Style>
         
-        <Style x:Key="FormBody" TargetType="FrameworkElement">
+        <Style x:Key="FormBodyStyle" TargetType="FrameworkElement">
             <Setter Property="Margin" Value="10" />
         </Style>
     </Application.Resources>

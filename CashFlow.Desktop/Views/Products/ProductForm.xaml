@@ -13,7 +13,7 @@
         Title="{x:Static globalization:Strings.Product}"
         Height="220"
         Width="400"
-        Style="{StaticResource Form}"
+        Style="{StaticResource FormStyle}"
         
         WindowStartupLocation="CenterOwner">
     <Window.Resources>
@@ -24,7 +24,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid Style="{StaticResource FormBody}">
+    <Grid Style="{StaticResource FormBodyStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
