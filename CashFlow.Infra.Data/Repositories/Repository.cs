@@ -71,21 +71,21 @@ namespace CashFlow.Infra.Data.Repositories
             return SQLiteContext.SaveChanges();
         }
 
-        public IList<TEntity> Select()
+        public IEnumerable<TEntity> Select()
         {
             IQueryable<TEntity> query = SelectQueryBuilder();
 
             return query.ToList();
         }
 
-        public IList<TEntity> Select(Func<IQueryable<TEntity>, IQueryable<TEntity>>? filter = null)
+        public IEnumerable<TEntity> Select(Func<IQueryable<TEntity>, IQueryable<TEntity>>? filter = null)
         {
             IQueryable<TEntity> query = SelectQueryBuilder(filter);
 
             return query.ToList();
         }
 
-        public IList<TEntity> All()
+        public IEnumerable<TEntity> All()
         {
             return Select();
         }

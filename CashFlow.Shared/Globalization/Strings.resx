@@ -129,6 +129,9 @@
   <data name="CashFlow" xml:space="preserve">
     <value>Cash Flow</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Historic" xml:space="preserve">
     <value>Historic</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>

@@ -15,6 +15,7 @@
             <Setter Property="Foreground" Value="Gray" />
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
 
         <Style x:Key="BtnBordered" TargetType="Button">

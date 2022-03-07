@@ -62,7 +62,6 @@
         BasedOn="{StaticResource Btn}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

@@ -18,6 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
@@ -26,15 +27,24 @@
         
         <StackPanel
             Grid.Row="0"
-            Style="{StaticResource TopPanel}">
+            Style="{StaticResource TopPanelStyle}">
             <Button
-                Style="{StaticResource AddProductBtn}"
+                Style="{StaticResource AddProductBtnStyle}"
                 Command="{Binding ShowFormCommand}"
                 Content="{x:Static globalization:Strings.Add}" />
         </StackPanel>
         
         <Border Grid.Row="1">
-            <TextBlock Text="List" />
+            <ItemsControl
+                ItemsSource="{Binding Products}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:ProductView
+                            DataContext="{Binding }"
+                            Style="{StaticResource ProductStyle}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Border>
     </Grid>
 </UserControl>
